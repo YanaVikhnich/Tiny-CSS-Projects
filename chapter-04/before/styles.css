@@ -1,1 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=PT+Serif&display=swap');
 
+html {
+    background-color: #f9f7f1;
+}
+body {
+    font-family: 'PT Serif', serif;
+    color: #404040;
+    padding: 0 24px;
+    max-width: 1200px; /*Sets the maximum width our page can become */
+    margin: 0 auto;  /* center the page */
+}
+h1 {
+    font: 700 4rem/1 'Oswald', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+h2 {
+    font: 3rem/.95 'Oswald', sans-serif;
+    text-transform: uppercase;
+    
+}
+time {
+    font: 400 1.5rem 'Oswald', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    
+
+    border-top: 3px solid #333333;
+    border-bottom: 3px solid #333333;
+    padding: 12px 0;
+    display: block;
+}
+
+time sup {
+    font-size: .875rem;
+    font-weight: normal;
+}
+blockquote {
+    font: 1.8rem/1.25 'Oswald', sans-serif;  /* font-style, font-variant font-weight font-stretch font-size/line-height font-family*/
+    margin: 1.5rem 2rem;
+}
+blockquote::before {
+    content: open-quote;
+}
+blockquote::after {
+    content: close-quote;
+}
+@counter-style emoji {  /* THE AT-RULE DEFINIG THE CUSTOM LIST-STYLE'S BEHAVIOR */
+    symbols: "\2615";
+    system: cyclic;
+    suffix: " ";
+}
+article ul {
+    list-style: emoji;  /* THE CUSTOM LIST-STYLE APPLIED TO THE UL */
+}
+img {
+    filter: grayscale(100%); /* CSS FILTER TO MAKE THE IMAGE BLACK AND WHITE */
+}
+figure {
+    margin: 0 0 12px 0;
+    text-align: center;
+}
+figcaption {
+    font-family: 'Oswald', sans-serif;
+}
+@media (min-width: 955px){  /*media - identifier, (min-width: 955px) - when the rules within should be applied*/
+   
+    /* Rules go here and are applied when query conditions are met */
+    article {
+        column-count: 3;  /* number of columns */
+        column-rule: 2px solid #333333; /* vertical line between the columns */
+        column-gap: 42px; /* space between the content and column line */
+        margin-top: 36px;
+    }
+        blockquote {
+            column-span: all; /* there are two value: all and none. The quote represented in the page through all columns */
+        }
+        figure {
+            break-inside: avoid; /* to prevent the image and its caption from ending up in different columns */
+            margin-right: 24px;
+            float: left;
+        }
+        p {
+            text-align: justify; /* text start and end at the same spot, forming a box */
+            hyphens: auto; /* Adding a hyphens to the word at the end of the line */
+        }
+
+    }
