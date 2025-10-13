@@ -1,0 +1,120 @@
+/* Defining CSS custom properties */
+body {
+    --primary: #de3c4b;
+    --primary-contrast: white;
+    --secondary: #717777;
+    --font: Helvetica, Arial, sans-serif;
+    --text-color: #2D3142;
+    --card-background: #ffffff;
+    --tecknologies-background: #ffdadd;
+    --page-background: linear-gradient(#4F5D75, #2D3142);
+    --image-size: 200px;
+/* CSS variables are case-sensitive */
+    background: var(--page-background);
+    font-family: var(--font);
+    color: var(--text-color);
+    display: flex;     /* allows us to place elements across a single axis either vertically or horixontally */
+    justify-content: center;  /* to center the card horizontally */
+    align-items: center;  /* To center the element vertically */
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* to ensure the body takes at least the full height of the viewport */
+}
+.card {
+    background-color: var(--card-background);
+    box-shadow: 0 0 55px rgba(38, 40, 45, .75); /* Adding shadow to the card */
+    width: 75vw;
+    max-width: 500px;
+    border-radius: 4px;
+    text-align: center;
+    margin: calc(-1*var(--image-size)/3);
+    background-image: radial-gradient(circle at top, var(--primary) 50%, transparent 50%, transparent); /* Our primary color is red, so our gradient will create a circle that't red until it reaches 50% of its container then it immediately shifts to transparent */
+    background-size: 1500px 500px;  /*Sets the dimensions of the background image to 1500px wide and 500px tall */
+    background-position: center -300px; /* Positions the background to be horizontally centered and starting 300px above the card */
+    background-repeat: no-repeat;  /* Prevents the background from tiling */
+    padding: 0 24px 24px;
+}
+img.portrait {
+    width: var(--image-size);
+    height: var(--image-size);
+    object-fit: cover; /* to ensure the image covers the entire area without distortion */
+    border-radius: 50%; /*Makes the image a circle */
+    margin-top: calc(-1*var(--image-size)/3); /* to move the image up by one-third of its height */
+}
+h1 {
+    font-size: 2rem;
+    margin: 36px 0 0;
+    color: var(--primary);
+}
+.title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
+dl {
+    display: flex;
+    justify-content: space-around; /* to distribute the space evenly around the items */
+    gap: 12px; /* to add space between the items */
+}
+dd {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+dl > div {
+    flex-basis: 33%; /* to make each item take up one-third of the available space, it sets the intial size the browser should use when calculating the amount of space the elements needs*/
+    flex-shrink: 1; /* to allow the items to shrink if necessary */
+    display: flex;
+    flex-direction: column-reverse; /* to place the dt below the dd. changing axis we want to operate on. */
+}
+dt {
+    font-size: .75rem; 
+}
+p.summary {
+    margin: 24px 0;
+    line-height: 1.5;
+}
+ul.technologies li {
+    padding: 12px 24px;
+    border-radius: 24px;
+    background: var(--tecknologies-background);
+}
+ul.technologies {
+    list-style: none; /* to remove the default bullet points */
+    padding: 0;
+    margin: 24px 0;
+    display: flex;
+    justify-content: space-between; /* to distribute the space evenly between the items */
+    gap: 12px; /* to add space between the items horizontally and when wrap is used vertically between out items */
+    flex-wrap: wrap; /* to allow the items to wrap to the next line if the container becomes smaller than items */
+}
+.actions a, .actions button {
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    font-size: 1rem;
+    cursor: pointer;
+}
+.follow {
+    background-color: var(--primary);
+    color: var(--primary-contrast);
+
+}
+.message {
+    color: var(--primary);
+    background-color: var(--primary-contrast);
+}
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 36px;
+}
+*:focus-visible {
+    outline: 1px dotted var(--primary);
+    outline-offset: 3px;
+}
