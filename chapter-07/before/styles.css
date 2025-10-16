@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Passions+Conflict&display=swap');
 html {
   padding: 0;
   margin: 0;
@@ -7,14 +8,53 @@ body {
   background-color: rgba(206, 194, 174, 0.24);
   padding: 4rem;
   font-size: 16px;
-  max-width: 78ch;
-  margin: 0 auto;
+  max-width: 78ch; /* Prevents our content from becoming excessively wide (relative unit that is equal to the width of the glyph 0  */
+  margin: 0 auto;   /* Centers the content */
   font-family: 'Times New Roman', Times, serif;
   border-left: double 5px rgba(0,0,0,.16);
-  min-height: 100vh;
+  min-height: 100vh;  /* Regardless of window size, the background covers the whole window */
   box-sizing: border-box;
 }
 
 img {
-  max-width: 100%;
+  max-width: 100%;  /*Pretending overflow on the narrow screens */
+}
+
+p {
+  line-height: 1.5;
+  text-align: justify;
+}
+p:first-of-type::first-letter {
+  font-size: 6em;
+  float: left;
+  line-height: .5;
+  font-family: 'Passions Conflict', cursive;
+}
+blockquote {
+  font-family: 'Passions Conflict', cursive;
+  font-size: 2em;
+  line-height: 1;
+}
+img.compass {
+  aspect-ratio: 1; /* The browser can save room for the image while it's being loaded, therefore reducing the layout shift */
+  float: right; /* Floats the image to the right */
+  shape-outside: circle(50%); /* Adds our circle with a value of 50% of radius at image center */ /*It allows us to define a shape around which the adjacent text will flow */
+  clip-path: circle(50%); /* Clips the image to a circle with a radius of 50% */
+  margin-left: 1rem;
+}
+/* Another way how to style a shape with border-radius
+img.compass {
+  aspect-ratio: 1;
+  float: right;
+  margin-left: 1rem;
+  border-radius: 50%;
+  shape-output: margin-box;    it also can have values like: margin-box, border-box, padding-box, content-box 
+}
+*/
+img.dog {
+  aspect-ratio: 126 / 161;
+  float: left;
+  shape-outside: url("https://raw.githubusercontent.com/michaelgearon/Tiny-CSS-Projects/main/chapter-07/before/img/dog.svg");
+  shape-margin: 1em; /* Adds a margin around the shape to prevent the text from touching the image */
+  margin-right: 1em;
 }
