@@ -51,3 +51,122 @@ main {
 h1 { color: var(--accent); }
 
 /* End Starting CSS */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+input:not([type="radio"], [type="checkbox"]), textarea, select{
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+  border:none;
+  border-bottom: solid 1px var(--primary);    /* Color is set only for fallback purposes */
+  border-image: linear-gradient(to right, var(--primary), var(--accent)) 1;
+  padding: 0 0 .25rem;
+  width: 100%;
+  background-color: var(--background-card);
+}
+textarea {
+  resize: vertical;
+}
+input[type="radio"], input[type="checkbox"] {
+  /* accent-color: var(--accent); /* Allows us to replace the user's agent chosen color with the color we specify */
+  appearance: none;
+  background-color: var(--background);
+  margin: 0;
+  width: 1.75em;
+  height: 1.75em;
+  border: 1px solid currentcolor;  /* Sets the border to the same color as the parent element's text color */
+  display: inline-grid;
+  place-content: center;  /* Sets up to center the inner disk or check mark when the element is checked */
+}
+input[type="radio"] {border-radius: 50%}
+input[type="ckeckbox"] {border-radius: 4px}
+ :where(input[type="radio"], input[type="checkbox"])::before {
+  display: block;
+  content: '';
+  width: 1em;
+  height: 1em;
+ }
+ :where(input[type="radio"], input[type="checkbox"]):hover::before {
+  background: var(--hover);
+ }
+ :where(input[type="radio"], input[type="checkbox"]):checked::before {
+  background: var(--accent);
+ }
+ input[type="radio"]::before {
+  border-radius: 50%;
+ }
+ input[type="checkbox"]::before {
+    clip-path: polygon(14% 44%, 0% 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  :is(input[type="radio"], input[type="checkbox"]):checked {
+    border-color: var(--accent);
+  }
+  label, legend {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    margin: 0 0 .5rem 0;
+    font-size: .875rem;
+    color: var(--label-color);
+  }
+  ::placeholder {  /* Targets any placeholder text regardless of element type */
+    color: var(--placeholder-color);
+    font-size: .75em;
+  }
+  button[type="submit"] {
+    border: none;
+    border-radius: 36px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: .5rem 2rem;
+  }
+  .actions {
+    margin-top: 2rem;
+  }
+  .error {
+    color: var(--error);
+    margin: .25rem 0 2rem;
+  }
+  .error span::before {
+    content: url("./img/error.svg");
+    display: inline-block;
+    width: 1.25ex;
+    height: 1.25ex;
+    vertical-align: baseline;
+    margin-right: .5ch;
+  }
+  .error span {
+    display: none;
+  }
+  .dirty:invalid + .error span {
+    display: inline;
+  }
+  :is(input, textarea).dirty:invalid {
+    border-color: var(--error);
+    border-image: none;
+  }
+  :is(input:not([type="radio"], [type="checkbox"]), textarea, select):focus-visible {
+    outline: none; /* Removes the default outline */
+    border-bottom: dashed 1px var(--primary);
+    border-image: none;   /* Removes the gradient image */
+  }
+  :is(input:not([type="radio"], [type="checkbox"]).dirty:invalid, textarea.dirty:invalid, select.dirty:invalid):focus-visible {
+    border-color: var(--error);
+  }
+  :where(input[type="radio"], [type="checkbox"]):focus-visible {
+    outline: dashed 1px var(--primary);
+    outline-offset: 2px; /* Moves the outline out 2pixels so that it isn't right up against the border */
+  }
+  select:hover {
+    cursor: pointer;
+  }
+  @media (forced-colors: active) {
+    :where(input[type="radio"], [type="checkbox"]):checked::before {
+      background-color: CanvasText;
+    }
+  }
